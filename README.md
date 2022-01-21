@@ -53,6 +53,11 @@
 $$
 H_{t}=O_{1}, R_{1}, A_{1}, \ldots, A_{t-1}, O_{t}, R_{t}
 $$
+```
+<img src="http://latex.codecogs.com/gif.latex?H_{t}=O_{1}, R_{1}, A_{1}, \ldots, A_{t-1}, O_{t}, R_{t}" />
+
+```
+
 Agent 在采取当前动作的时候会依赖于它之前得到的这个历史，**所以你可以把整个游戏的状态看成关于这个历史的函数：**
 $$
 S_{t}=f\left(H_{t}\right)
