@@ -50,22 +50,20 @@
 
 
 在跟环境的交互过程中，agent 会获得很多观测。在每一个观测会采取一个动作，它也会得到一个奖励。**所以历史是观测(observation)、行为、奖励的序列：**
-$$
-H_{t}=O_{1}, R_{1}, A_{1}, \ldots, A_{t-1}, O_{t}, R_{t}
-$$
+
 <img src="http://latex.codecogs.com/gif.latex?H_{t}=O_{1}, R_{1}, A_{1}, \ldots, A_{t-1}, O_{t}, R_{t}" />
 
 Agent 在采取当前动作的时候会依赖于它之前得到的这个历史，**所以你可以把整个游戏的状态看成关于这个历史的函数：**
-$$
-S_{t}=f\left(H_{t}\right)
-$$
+
+<img src="http://latex.codecogs.com/gif.latex?S_{t}=f\left(H_{t}\right)" />
+
 Q: 状态和观测有什么关系
 
 
 
-A: `状态(state)`    $s$  是对世界的完整描述，不会隐藏世界的信息。`观测(observation)` $o$ 是对状态的部分描述，可能会遗漏一些信息。在 deep RL 中，我们几乎总是用一个实值的向量、矩阵或者更高阶的张量来表示状态和观测。举个例子，我们可以用 RGB 像素值的矩阵来表示一个视觉的观测，我们可以用机器人关节的角度和速度来表示一个机器人的状态。
+A: `状态(state)`    <img src="http://latex.codecogs.com/gif.latex?s" />是对世界的完整描述，不会隐藏世界的信息。`观测(observation)` <img src="http://latex.codecogs.com/gif.latex?o" /> 是对状态的部分描述，可能会遗漏一些信息。在 deep RL 中，我们几乎总是用一个实值的向量、矩阵或者更高阶的张量来表示状态和观测。举个例子，我们可以用 RGB 像素值的矩阵来表示一个视觉的观测，我们可以用机器人关节的角度和速度来表示一个机器人的状态。
 
-环境有自己的函数 $S_{t}^{e}=f^{e}\left(H_{t}\right)$ 来更新状态，在 agent 的内部也有一个函数 $S_{t}^{a}=f^{a}\left(H_{t}\right)$ 来更新状态。当 agent 的状态跟环境的状态等价的时候，我们就说这个环境是 `full observability`，就是全部可以观测。换句话说，当 agent 能够观察到环境的所有状态时，我们称这个环境是`完全可观测的(fully observed)`。在这种情况下面，强化学习通常被建模成一个 Markov decision process(MDP)的问题。在 MDP 中， $O_{t}=S_{t}^{e}=S_{t}^{a}$。
+环境有自己的函数<img src="http://latex.codecogs.com/gif.latex?S_{t}^{e}=f^{e}\left(H_{t}\right)" /> 来更新状态，在 agent 的内部也有一个函数<img src="http://latex.codecogs.com/gif.latex?S_{t}^{a}=f^{a}\left(H_{t}\right)" />  来更新状态。当 agent 的状态跟环境的状态等价的时候，我们就说这个环境是 `full observability`，就是全部可以观测。换句话说，当 agent 能够观察到环境的所有状态时，我们称这个环境是`完全可观测的(fully observed)`。在这种情况下面，强化学习通常被建模成一个 Markov decision process(MDP)的问题。在 MDP 中，<img src="http://latex.codecogs.com/gif.latex?O_{t}=S_{t}^{e}=S_{t}^{a}" /> 。
 
 但是有一种情况是 agent 得到的观测并不能包含环境运作的所有状态，因为在这个强化学习的设定里面，环境的状态才是真正的所有状态。
 
@@ -76,7 +74,7 @@ A: `状态(state)`    $s$  是对世界的完整描述，不会隐藏世界的�
 
 `部分可观测马尔可夫决策过程(Partially Observable Markov Decision Processes, POMDP)`是一个马尔可夫决策过程的泛化。POMDP 依然具有马尔可夫性质，但是假设智能体无法感知环境的状态 $s$，只能知道部分观测值 $o$。比如在自动驾驶中，智能体只能感知传感器采集的有限的环境信息。
 
-POMDP 可以用一个 7 元组描述：$(S,A,T,R,\Omega,O,\gamma)$，其中 $S$ 表示状态空间，为隐变量，$A$ 为动作空间，$T(s'|s,a)$ 为状态转移概率，$R$ 为奖励函数，$\Omega(o|s,a)$ 为观测概率，$O$ 为观测空间，$\gamma$ 为折扣系数。
+POMDP 可以用一个 7 元组描述：<img src="http://latex.codecogs.com/gif.latex?(S,A,T,R,\Omega,O,\gamma)" />，其中 <img src="http://latex.codecogs.com/gif.latex?S" /> 表示状态空间，为隐变量，<img src="http://latex.codecogs.com/gif.latex?A" />为动作空间，<img src="http://latex.codecogs.com/gif.latex?T(s'|s,a)" /> 为状态转移概率，<img src="http://latex.codecogs.com/gif.latex?R" /> 为奖励函数，<img src="http://latex.codecogs.com/gif.latex?\Omega(o|s,a)" /> 为观测概率，<img src="http://latex.codecogs.com/gif.latex?O" /> 为观测空间，<img src="http://latex.codecogs.com/gif.latex?\gamma" /> 为折扣系数。
 
 ## Action Spaces
 
@@ -85,7 +83,7 @@ POMDP 可以用一个 7 元组描述：$(S,A,T,R,\Omega,O,\gamma)$，其中 $S$ 
 例如，
 
 * 走迷宫机器人如果只有东南西北这 4 种移动方式，则其为离散动作空间；
-* 如果机器人向 $360^{\circ}$ 中的任意角度都可以移动，则为连续动作空间。
+* 如果机器人向<img src="http://latex.codecogs.com/gif.latex?360^{\circ}" />中的任意角度都可以移动，则为连续动作空间。
 
 ## Major Components of an RL Agent 
 
@@ -105,8 +103,8 @@ POMDP 可以用一个 7 元组描述：$(S,A,T,R,\Omega,O,\gamma)$，其中 $S$ 
 
 Policy 是 agent 的行为模型，它决定了这个 agent 的行为，它其实是一个函数，把输入的状态变成行为。这里有两种 policy：
 
-* 一种是 `stochastic policy(随机性策略)`，它就是 $\pi$ 函数 $\pi(a | s)=P\left[A_{t}=a | S_{t}=s\right]$ 。当你输入一个状态 $s$ 的时候，输出是一个概率。这个概率就是你所有行为的一个概率，然后你可以进一步对这个概率分布进行采样，得到真实的你采取的行为。比如说这个概率可能是有 70% 的概率往左，30% 的概率往右，那么你通过采样就可以得到一个 action。
-* 一种是 `deterministic policy(确定性策略)`，就是说你这里有可能只是采取它的极大化，采取最有可能的动作，即 $a^{*}=\arg \underset{a}{\max} \pi(a \mid s)$。 你现在这个概率就是事先决定好的。
+* 一种是 `stochastic policy(随机性策略)`，它就是<img src="http://latex.codecogs.com/gif.latex?s" /> $\pi$ 函数 <img src="http://latex.codecogs.com/gif.latex?\pi(a | s)=P\left[A_{t}=a | S_{t}=s\right]" /> 。当你输入一个状态 $s$ 的时候，输出是一个概率。这个概率就是你所有行为的一个概率，然后你可以进一步对这个概率分布进行采样，得到真实的你采取的行为。比如说这个概率可能是有 70% 的概率往左，30% 的概率往右，那么你通过采样就可以得到一个 action。
+* 一种是 `deterministic policy(确定性策略)`，就是说你这里有可能只是采取它的极大化，采取最有可能的动作，即<img src="http://latex.codecogs.com/gif.latex?a^{*}=\arg \underset{a}{\max} \pi(a \mid s)" />。 你现在这个概率就是事先决定好的。
 
 从  Atari 游戏来看的话，策略函数的输入就是游戏的一帧，它的输出决定你是往左走或者是往右走。
 
@@ -122,16 +120,14 @@ Policy 是 agent 的行为模型，它决定了这个 agent 的行为，它其�
 
 价值函数里面有一个 `discount factor(折扣因子)`，我们希望尽可能在短的时间里面得到尽可能多的奖励。如果我们说十天过后，我给你 100 块钱，跟我现在给你 100 块钱，你肯定更希望我现在就给你 100 块钱，因为你可以把这 100 块钱存在银行里面，你就会有一些利息。所以我们就通过把这个折扣因子放到价值函数的定义里面，价值函数的定义其实是一个期望，如下式所示：
 
+<img src="http://latex.codecogs.com/gif.latex?v_{\pi}(s) \doteq \mathbb{E}_{\pi}\left[G_{t} \mid S_{t}=s\right]=\mathbb{E}_{\pi}\left[\sum_{k=0}^{\infty} \gamma^{k} R_{t+k+1} \mid S_{t}=s\right], \text { for all } s \in \mathcal{S}" />
 
-$$
-v_{\pi}(s) \doteq \mathbb{E}_{\pi}\left[G_{t} \mid S_{t}=s\right]=\mathbb{E}_{\pi}\left[\sum_{k=0}^{\infty} \gamma^{k} R_{t+k+1} \mid S_{t}=s\right], \text { for all } s \in \mathcal{S}
-$$
 这里有一个期望 $\mathbb{E}_{\pi}$，这里有个小角标是 $\pi$ 函数，这个 $\pi$ 函数就是说在我们已知某一个策略函数的时候，到底可以得到多少的奖励。
 
 我们还有一种价值函数：Q 函数。Q 函数里面包含两个变量：状态和动作，其定义如下式所示：
-$$
-q_{\pi}(s, a) \doteq \mathbb{E}_{\pi}\left[G_{t} \mid S_{t}=s, A_{t}=a\right]=\mathbb{E}_{\pi}\left[\sum_{k=0}^{\infty} \gamma^{k} R_{t+k+1} \mid S_{t}=s, A_{t}=a\right]
-$$
+
+<img src="http://latex.codecogs.com/gif.latex?q_{\pi}(s, a) \doteq \mathbb{E}_{\pi}\left[G_{t} \mid S_{t}=s, A_{t}=a\right]=\mathbb{E}_{\pi}\left[\sum_{k=0}^{\infty} \gamma^{k} R_{t+k+1} \mid S_{t}=s, A_{t}=a\right]" />
+
 所以你未来可以获得多少的奖励，它的这个期望取决于你当前的状态和当前的行为。这个 Q 函数是强化学习算法里面要学习的一个函数。因为当我们得到这个 Q 函数后，进入某一种状态，它最优的行为就可以通过这个 Q 函数来得到。
 
 ### Model
@@ -139,16 +135,10 @@ $$
 第三个组成部分是模型，**模型决定了下一个状态会是什么样的，就是说下一步的状态取决于你当前的状态以及你当前采取的行为。**它由两个部分组成，
 
 * 概率：这个转移状态之间是怎么转移的，如下式所示：
-
-$$
-\mathcal{P}_{s s^{\prime}}^{a}=\mathbb{P}\left[S_{t+1}=s^{\prime} \mid S_{t}=s, A_{t}=a\right]
-$$
+* <img src="http://latex.codecogs.com/gif.latex?\mathcal{P}_{s s^{\prime}}^{a}=\mathbb{P}\left[S_{t+1}=s^{\prime} \mid S_{t}=s, A_{t}=a\right]" />
 
 * 奖励函数：当你在当前状态采取了某一个行为，可以得到多大的奖励，如下式所示：
-
-$$
-\mathcal{R}_{s}^{a}=\mathbb{E}\left[R_{t+1} \mid S_{t}=s, A_{t}=a\right]
-$$
+* <img src="http://latex.codecogs.com/gif.latex?\mathcal{R}_{s}^{a}=\mathbb{E}\left[R_{t+1} \mid S_{t}=s, A_{t}=a\right]" />
 
 当我们有了这三个组成部分过后，就形成了一个 `马尔可夫决策过程(Markov Decision Process)`。这个决策过程可视化了状态之间的转移以及采取的行为。
 
@@ -183,9 +173,9 @@ A: 对于一个状态转移概率已知的马尔可夫决策过程，我们可�
 * `model-based(有模型)` RL agent，它通过学习这个状态的转移来采取动作。
 * ` model-free(免模型)` RL agent，它没有去直接估计这个状态的转移，也没有得到环境的具体转移变量。它通过学习价值函数和策略函数进行决策。Model-free 的模型里面没有一个环境转移的模型。
 
-我们可以用马尔可夫决策过程来定义强化学习任务，并表示为四元组 $<S,A,P,R>$，即状态集合、动作集合、状态转移函数和奖励函数。如果这四元组中所有元素均已知，且状态集合和动作集合在有限步数内是有限集，则机器可以对真实环境进行建模，构建一个虚拟世界来模拟真实环境的状态和交互反应。
+我们可以用马尔可夫决策过程来定义强化学习任务，并表示为四元组<img src="http://latex.codecogs.com/gif.latex?(S,A,P,R)" />，即状态集合、动作集合、状态转移函数和奖励函数。如果这四元组中所有元素均已知，且状态集合和动作集合在有限步数内是有限集，则机器可以对真实环境进行建模，构建一个虚拟世界来模拟真实环境的状态和交互反应。
 
-具体来说，当智能体知道状态转移函数 $P(s_{t+1}|s_t,a_t)$ 和奖励函数 $R(s_t,a_t)$ 后，它就能知道在某一状态下执行某一动作后能带来的奖励和环境的下一状态，这样智能体就不需要在真实环境中采取动作，直接在虚拟世界中学习和规划策略即可。这种学习方法称为`有模型学习`。
+具体来说，当智能体知道状态转移函数<img src="http://latex.codecogs.com/gif.latex?P(s_{t+1}|s_t,a_t)" /> 和奖励函数<img src="http://latex.codecogs.com/gif.latex?R(s_t,a_t)" /> 后，它就能知道在某一状态下执行某一动作后能带来的奖励和环境的下一状态，这样智能体就不需要在真实环境中采取动作，直接在虚拟世界中学习和规划策略即可。这种学习方法称为`有模型学习`。
 
 然而在实际应用中，智能体并不是那么容易就能知晓 MDP 中的所有元素的。**通常情况下，状态转移函数和奖励函数很难估计，甚至连环境中的状态都可能是未知的，这时就需要采用免模型学习。**免模型学习没有对真实环境进行建模，智能体只能在真实环境中通过一定的策略来执行动作，等待奖励和状态迁移，然后根据这些反馈信息来更新行为策略，这样反复迭代直到学习到最优策略。
 
