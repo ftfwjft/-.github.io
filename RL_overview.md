@@ -42,7 +42,7 @@
 
 ### Sequential Decision Making
 
-<img src="https://gitee.com/ftfwjft/images/raw/master/image/cloud/1.21.png" />
+![image-20220122143726449](https://gitee.com/ftfwjft/images/raw/master/image/cloud/image-20220122143726449.png)
 
 在一个强化学习环境里面，agent 的目的就是选取一系列的动作来极大化它的奖励，所以这些采取的动作必须有长期的影响。但在这个过程里面，它的奖励其实是被延迟了，就是说你现在采取的某一步决策可能要等到时间很久过后才知道这一步到底产生了什么样的影响。
 
@@ -61,7 +61,7 @@ Q: 状态和观测有什么关系
 
 
 
-A: `状态(state)`    <img src="http://latex.codecogs.com/gif.latex?s" />是对世界的完整描述，不会隐藏世界的信息。`观测(observation)` <img src="https://gitee.com/ftfwjft/images/raw/master/image/cloud/gif.latex" /> 是对状态的部分描述，可能会遗漏一些信息。在 deep RL 中，我们几乎总是用一个实值的向量、矩阵或者更高阶的张量来表示状态和观测。举个例子，我们可以用 RGB 像素值的矩阵来表示一个视觉的观测，我们可以用机器人关节的角度和速度来表示一个机器人的状态。
+A: `状态(state)`  <img src="http://latex.codecogs.com/gif.latex?s" />是对世界的完整描述，不会隐藏世界的信息。`观测(observation)` <img src="https://gitee.com/ftfwjft/images/raw/master/image/cloud/gif.latex" /> 是对状态的部分描述，可能会遗漏一些信息。在 deep RL 中，我们几乎总是用一个实值的向量、矩阵或者更高阶的张量来表示状态和观测。举个例子，我们可以用 RGB 像素值的矩阵来表示一个视觉的观测，我们可以用机器人关节的角度和速度来表示一个机器人的状态。
 
 环境有自己的函数<img src="http://latex.codecogs.com/gif.latex?S_{t}^{e}=f^{e}\left(H_{t}\right)" /> 来更新状态，在 agent 的内部也有一个函数<img src="http://latex.codecogs.com/gif.latex?S_{t}^{a}=f^{a}\left(H_{t}\right)" />  来更新状态。当 agent 的状态跟环境的状态等价的时候，我们就说这个环境是 `full observability`，就是全部可以观测。换句话说，当 agent 能够观察到环境的所有状态时，我们称这个环境是`完全可观测的(fully observed)`。在这种情况下面，强化学习通常被建模成一个 Markov decision process(MDP)的问题。在 MDP 中，<img src="http://latex.codecogs.com/gif.latex?O_{t}=S_{t}^{e}=S_{t}^{a}" /> 。
 
@@ -72,7 +72,7 @@ A: `状态(state)`    <img src="http://latex.codecogs.com/gif.latex?s" />是对�
 
 也就是说当 agent 只能看到部分的观测，我们就称这个环境是`部分可观测的(partially observed)`。在这种情况下面，强化学习通常被建模成一个 POMDP 的问题。
 
-`部分可观测马尔可夫决策过程(Partially Observable Markov Decision Processes, POMDP)`是一个马尔可夫决策过程的泛化。POMDP 依然具有马尔可夫性质，但是假设智能体无法感知环境的状态 $s$，只能知道部分观测值 $o$。比如在自动驾驶中，智能体只能感知传感器采集的有限的环境信息。
+`部分可观测马尔可夫决策过程(Partially Observable Markov Decision Processes, POMDP)`是一个马尔可夫决策过程的泛化。POMDP 依然具有马尔可夫性质，但是假设智能体无法感知环境的状态 <img src="http://latex.codecogs.com/gif.latex?s" />，只能知道部分观测值 <img src="http://latex.codecogs.com/gif.latex?O" />。比如在自动驾驶中，智能体只能感知传感器采集的有限的环境信息。
 
 POMDP 可以用一个 7 元组描述：<img src="http://latex.codecogs.com/gif.latex?(S,A,T,R,\Omega,O,\gamma)" />，其中 <img src="http://latex.codecogs.com/gif.latex?S" /> 表示状态空间，为隐变量，<img src="http://latex.codecogs.com/gif.latex?A" />为动作空间，<img src="http://latex.codecogs.com/gif.latex?T(s'|s,a)" /> 为状态转移概率，<img src="http://latex.codecogs.com/gif.latex?R" /> 为奖励函数，<img src="http://latex.codecogs.com/gif.latex?\Omega(o|s,a)" /> 为观测概率，<img src="http://latex.codecogs.com/gif.latex?O" /> 为观测空间，<img src="http://latex.codecogs.com/gif.latex?\gamma" /> 为折扣系数。
 
@@ -103,7 +103,7 @@ POMDP 可以用一个 7 元组描述：<img src="http://latex.codecogs.com/gif.l
 
 Policy 是 agent 的行为模型，它决定了这个 agent 的行为，它其实是一个函数，把输入的状态变成行为。这里有两种 policy：
 
-* 一种是 `stochastic policy(随机性策略)`，它就是<img src="http://latex.codecogs.com/gif.latex?s" /> $\pi$ 函数 <img src="http://latex.codecogs.com/gif.latex?\pi(a | s)=P\left[A_{t}=a | S_{t}=s\right]" /> 。当你输入一个状态 $s$ 的时候，输出是一个概率。这个概率就是你所有行为的一个概率，然后你可以进一步对这个概率分布进行采样，得到真实的你采取的行为。比如说这个概率可能是有 70% 的概率往左，30% 的概率往右，那么你通过采样就可以得到一个 action。
+* 一种是 `stochastic policy(随机性策略)`，它就是<img src="http://latex.codecogs.com/gif.latex?\pi" /> 函数 <img src="http://latex.codecogs.com/gif.latex?\pi(a | s)=P\left[A_{t}=a | S_{t}=s\right]" /> 。当你输入一个状态 $s$ 的时候，输出是一个概率。这个概率就是你所有行为的一个概率，然后你可以进一步对这个概率分布进行采样，得到真实的你采取的行为。比如说这个概率可能是有 70% 的概率往左，30% 的概率往右，那么你通过采样就可以得到一个 action。
 * 一种是 `deterministic policy(确定性策略)`，就是说你这里有可能只是采取它的极大化，采取最有可能的动作，即<img src="http://latex.codecogs.com/gif.latex?a^{*}=\arg \underset{a}{\max} \pi(a \mid s)" />。 你现在这个概率就是事先决定好的。
 
 从  Atari 游戏来看的话，策略函数的输入就是游戏的一帧，它的输出决定你是往左走或者是往右走。
