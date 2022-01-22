@@ -23,7 +23,7 @@
 
 ### 1.4 强化学习方式
 
-![](https://gitee.com/ftfwjft/images/raw/master/image/cloud/1.1.png ':size=450')
+<img src="https://gitee.com/ftfwjft/images/raw/master/image/cloud/1.1.png" />
 
 **强化学习讨论的问题是一个智能体(agent) 怎么在一个复杂不确定的环境(environment)里面去极大化它能获得的奖励。** 示意图由两部分组成：agent 和 environment。在强化学习过程中，agent 跟 environment 一直在交互。Agent 在环境里面获取到状态，agent 会利用这个状态输出一个动作(action)，一个决策。然后这个决策会放到环境之中去，环境会根据 agent 采取的决策，输出下一个状态以及当前的这个决策得到的奖励。Agent 的目的就是为了尽可能多地从环境中获取奖励。
 
@@ -42,7 +42,7 @@
 
 ### Sequential Decision Making
 
-![](https://gitee.com/ftfwjft/images/raw/master/image/cloud/1.21.png ':size=500')
+<img src="https://gitee.com/ftfwjft/images/raw/master/image/cloud/1.21.png" />
 
 在一个强化学习环境里面，agent 的目的就是选取一系列的动作来极大化它的奖励，所以这些采取的动作必须有长期的影响。但在这个过程里面，它的奖励其实是被延迟了，就是说你现在采取的某一步决策可能要等到时间很久过后才知道这一步到底产生了什么样的影响。
 
@@ -200,7 +200,7 @@ A: 针对是否需要对真实环境建模，强化学习可以分为有模型�
 * 免模型学习更为简单直观且有丰富的开源资料，像 DQN、AlphaGo 系列等都采用免模型学习；
 * 在目前的强化学习研究中，大部分情况下环境都是静态的、可描述的，智能体的状态是离散的、可观察的（如 Atari 游戏平台），这种相对简单确定的问题并不需要评估状态转移函数和奖励函数，直接采用免模型学习，使用大量的样本进行训练就能获得较好的效果。
 
-![](https://gitee.com/ftfwjft/images/raw/master/image/cloud/1.36.png ':size=400')
+<img src="https://gitee.com/ftfwjft/images/raw/master/image/cloud/1.36.png" style="zoom:25%;" >
 
 把几类模型放到同一个饼图里面。饼图有三个组成部分：价值函数、策略和模型。按一个 agent 具不具有三者中的两者或者一者可以把它分成很多类
 
