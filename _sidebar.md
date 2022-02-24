@@ -17,5 +17,15 @@
 
 
 - paper
-  - [Machine Learning in Materials science](./notes/MS/Machine_learning_in_materials_science/note.md)
+  - [Machine Learning in Materials science](./notes/MS/p1.md)
+  - [Atom-centered symmetry functions](./notes/MS/p2.md)
+  - [Four Generations of High-Dimensional Neural Network Potentials](./notes/MS/p3.md)
+  - [Quantum_Material_Synthesis_RL](./notes/MS/p4.md)
+  - [Machine learning potentials](./notes/MS/p5.md)
+  - [On machine learning force fields for metallic](./notes/MS/p6.md)
+  - [optimization of Molecules via DRL](./notes/MS/p7.md)
+  - [Transfer Learning of Potential Energy Surfaces](./notes/MS/p8.md)
+  - [Transfer Learning to CCSD(T)](./notes/MS/p9.md)
+  
+  
 
