@@ -1,8 +1,6 @@
 * 介绍
     * [Chapter 1](./RL_overview.md)
     
-    * [model1](./notes/MM/model1.md)
-    
       
     
 
@@ -12,7 +10,7 @@
 
 
 - Q&A
-  - [强化学习](./notes/RL/Q_&_A/answers.md)
+  - [强化学习](./notes/RL/answers.md)
   - [Python](./notes/Python.md)
 
 

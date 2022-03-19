@@ -1,6 +1,6 @@
 * 项目地址
-  * [Test](https://gitee.com/ftfwjft/images/)
+  * [个人图床](https://gitee.com/ftfwjft/images/)
+  * [github](https://github.com/ftfwjft)
 
-- 测试
-  - [paper](./files/p1.pdf)
+
 
