@@ -1,6 +1,9 @@
-* 介绍
-    * [Chapter 1](./RL_overview.md)
+* 笔记
+    * 强化学习
     
+      * [Chapter 1 强化学习简介](./notes/RL/RL_overview.md)
+      * [Chapter 2 MDP](./notes/RL/MDP.md)
+      
       
     
 
@@ -27,4 +30,7 @@
   - [Transfer Learning to CCSD(T)](./notes/MS/p9.md)
   
   
+
+- model
+  - [美赛模型](./notes/MM/model1.md)
 
