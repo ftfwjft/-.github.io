@@ -14,5 +14,3 @@
 
 [Get Started](/README.md)
 
-[test](./1.md)
-
